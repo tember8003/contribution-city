@@ -82,10 +82,11 @@ function generateSVG(weekData, totalContributions) {
     const height = 450;
     
     const buildingWidth = 70;
-    const gap = 12;
     const maxHeight = 140;
     const groundY = 380;
-    const startX = 90; // 시작 위치
+    const padding = 80; // 좌우 여백
+    const totalBuildings = 7;
+    const gap = (width - padding * 2 - buildingWidth * totalBuildings) / (totalBuildings - 1); // 등간격 계산
     
     // 요일 이름
     const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -117,7 +118,7 @@ function generateSVG(weekData, totalContributions) {
     weekData.forEach((day, index) => {
         const level = getLevel(day.contributionCount);
         const bHeight = level === 0 ? 25 : Math.max(50, (day.contributionCount / 12) * maxHeight);
-        const x = startX + index * (buildingWidth + gap);
+        const x = padding + index * (buildingWidth + gap);
         const y = groundY - bHeight;
         
         // 건물 색상 (레벨별 그라데이션)
@@ -153,7 +154,7 @@ function generateSVG(weekData, totalContributions) {
         } else {
             // 창문 생성
             let windows = '';
-            const windowRows = Math.floor(bHeight / 30);
+            const windowRows = Math.floor((bHeight - 40) / 30); // 위아래 여백 확보
             const windowCols = 4;
             const winWidth = 12;
             const winHeight = 16;
@@ -164,6 +165,9 @@ function generateSVG(weekData, totalContributions) {
                 for (let col = 0; col < windowCols; col++) {
                     const wx = x + 12 + col * winGapX;
                     const wy = y + 20 + row * winGapY;
+                    
+                    // 창문이 건물 바닥 아래로 내려가지 않도록 체크
+                    if (wy + winHeight > y + bHeight - 10) continue;
                     
                     const isLit = Math.random() > 0.25;
                     const warmth = Math.random();
