@@ -79,12 +79,13 @@ function getLastWeekData(calendar) {
 // SVG 생성
 function generateSVG(weekData, totalContributions) {
     const width = 900;
-    const height = 500;
+    const height = 450;
     
-    const buildingWidth = 85;
-    const gap = 18;
-    const maxHeight = 220;
+    const buildingWidth = 70;
+    const gap = 12;
+    const maxHeight = 140;
     const groundY = 380;
+    const startX = 90; // 시작 위치
     
     // 요일 이름
     const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -116,7 +117,7 @@ function generateSVG(weekData, totalContributions) {
     weekData.forEach((day, index) => {
         const level = getLevel(day.contributionCount);
         const bHeight = level === 0 ? 25 : Math.max(50, (day.contributionCount / 12) * maxHeight);
-        const x = 95 + index * (buildingWidth + gap);
+        const x = startX + index * (buildingWidth + gap);
         const y = groundY - bHeight;
         
         // 건물 색상 (레벨별 그라데이션)
