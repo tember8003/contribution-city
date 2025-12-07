@@ -16,7 +16,7 @@ jobs:
           node-version: '20'
       
       - name: Generate Contribution City
-        run: node generate.js
+        run: node generate-city.js
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
