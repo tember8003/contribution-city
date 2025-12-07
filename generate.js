@@ -253,13 +253,15 @@ async function generateContributionCity() {
         }
         .stats-text {
             font-family: 'Galmuri11', monospace;
-            font-size: 36px;
+            font-size: 48px;
             fill: #ffffff;
+            font-weight: bold;
         }
         .stats-label {
             font-family: 'Galmuri11', monospace;
-            font-size: 28px;
+            font-size: 40px;
             fill: #9CA3AF;
+            font-weight: bold;
         }
     </style>
 </defs>
@@ -297,10 +299,10 @@ async function generateContributionCity() {
 <circle cx="2050" cy="220" r="1.5" fill="white" opacity="0.6"/>
 
 <!-- TOTAL / WEEK 텍스트 -->
-<text x="50" y="50" class="stats-label">TOTAL:</text>
-<text x="180" y="50" class="stats-text">${totalCommits}</text>
-<text x="50" y="90" class="stats-label">WEEK:</text>
-<text x="180" y="90" class="stats-text">${weekCommits}</text>
+<text x="50" y="1180" class="stats-label">TOTAL:</text>
+<text x="220" y="1180" class="stats-text">${totalCommits}</text>
+<text x="50" y="1230" class="stats-label">WEEK:</text>
+<text x="220" y="1230" class="stats-text">${weekCommits}</text>
 
 `;
     
