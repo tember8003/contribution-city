@@ -2,7 +2,7 @@
 
 GitHub contribution을 도시 스카이라인으로 시각화합니다.
 
-![Contribution City](./profile-3d-contrib/contribution-city.svg)
+![Contribution City](./contribution-city.svg)
 
 ## 사용법
 
