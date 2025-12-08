@@ -3,7 +3,7 @@ const path = require('path');
 
 // GitHub API 설정
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const GITHUB_USERNAME = process.env.GITHUB_USERNAME || 'mna11';
+const GITHUB_USERNAME = process.env.GITHUB_USERNAME;
 
 // SVG 파일들 로드
 const assetsDir = path.join(__dirname, 'assets');
