@@ -30,7 +30,7 @@ jobs:
           if git commit -m "🏙️ Update contribution city" ; then
             if ! git pull --rebase origin "${{ github.ref_name }}" ; then
               git rebase --abort || true
-              echo "Failed to rebase against latest ${GITHUB_REF_NAME}."
+              echo "Failed to rebase against latest ${{ github.ref_name }}."
               exit 1
             fi
             git push origin HEAD:${{ github.ref_name }}
