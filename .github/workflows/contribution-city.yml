@@ -29,10 +29,10 @@ jobs:
           git add -A .
           if git commit -m "🏙️ Update contribution city" ; then
             if ! git pull --rebase origin "${{ github.ref_name }}" ; then
-              if git rev-parse --verify REBASE_HEAD >/dev/null 2>&1 ; then
+              if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ] ; then
                 git rebase --abort
               fi
-              echo "Failed to rebase against latest ${{ github.ref_name }}. Please retry the workflow."
+              echo "Failed to rebase against latest ${{ github.ref_name }} (likely merge conflicts with recent commits). Resolve conflicts or retry the workflow."
               exit 1
             fi
             git push origin HEAD:${{ github.ref_name }}
